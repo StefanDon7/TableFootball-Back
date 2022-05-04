@@ -1,12 +1,12 @@
-package rs.stefanlezaic.tablefootball.services;
+package rs.stefanlezaic.tablefootball.repository;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 import rs.stefanlezaic.tablefootball.model.Player;
 
 import java.util.List;
 
-@Service
-public interface PlayerService {
+@Repository
+public interface PlayerRepository {
     List<Player> getAllPlayers();
 
     Player getPlayerByUUID(String uuid);
@@ -14,5 +14,4 @@ public interface PlayerService {
     Player getPlayerByUsername(String username, String password);
 
     Player getPlayerByEmail(String email, String password);
-
 }
