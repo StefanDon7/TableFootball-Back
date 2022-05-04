@@ -1,6 +1,7 @@
 package rs.stefanlezaic.tablefootball.repository;
 
 import org.springframework.stereotype.Repository;
+import rs.stefanlezaic.tablefootball.model.Match;
 import rs.stefanlezaic.tablefootball.model.Team;
 
 import java.util.List;
@@ -14,4 +15,10 @@ public interface TeamRepository {
     Team getTeamByPlayer(String uuid);
 
     Team getTeamByPlayers(String firstPlayerUUID, String secondPlayerUUID);
+
+    Team add(Team team);
+
+    Team update(Team team);
+
+    Team delete(String uuid);
 }

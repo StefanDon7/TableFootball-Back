@@ -1,7 +1,6 @@
 package rs.stefanlezaic.tablefootball.services;
 
 import org.springframework.stereotype.Service;
-import rs.stefanlezaic.tablefootball.model.Player;
 import rs.stefanlezaic.tablefootball.model.Team;
 
 import java.util.List;
@@ -17,4 +16,9 @@ public interface TeamService {
 
     Team getTeamByPlayers(String firstPlayerUUID, String secondPlayerUUID);
 
+    Team add(Team team);
+
+    Team update(Team team);
+
+    Team delete(String uuid);
 }

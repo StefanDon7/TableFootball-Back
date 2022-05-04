@@ -45,4 +45,25 @@ public class MatchRepositoryImpl implements MatchRepository {
         ).collect(Collectors.toList());
 
     }
+
+    @Override
+    public Match add(Match match) {
+        return null;
+    }
+
+    @Override
+    public Match update(Match match) {
+        return matches.stream().filter(item -> item.getUuid().equals(match.getUuid())).findFirst().map(exisingMatch -> {
+            exisingMatch.setFirstTeamGoal(match.getFirstTeamGoal());
+            exisingMatch.setSecondTeamGoal(match.getSecondTeamGoal());
+            return exisingMatch;
+        }).orElse(null);
+    }
+
+    @Override
+    public Match delete(String uuid) {
+        Match finedMatch = matches.stream().filter(item -> item.getUuid().equals(uuid)).findFirst().orElse(null);
+        matches = matches.stream().filter(item -> !item.getUuid().equals(uuid)).collect(Collectors.toList());
+        return finedMatch;
+    }
 }

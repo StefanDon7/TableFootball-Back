@@ -24,8 +24,18 @@ public class MatchController {
         return matchService.getAllMatches();
     }
 
-    @PostMapping("/by-user/{uuid}")
-    List<Match> getMatchesByUser(@PathVariable String uuid) {
+    @GetMapping("/by-user/{uuid}")
+    public List<Match> getMatchesByUser(@PathVariable String uuid) {
         return matchService.getMatchesByUser(uuid);
     }
+
+    @GetMapping("/by-team/{uuid}")
+    public List<Match> getMatchesByTeam(@PathVariable String uuid) {
+        return matchService.getMatchesByTeam(uuid);
+    }
+
+    public Match add(@RequestBody Match match){
+        return matchService.add(match);
+    }
+
 }

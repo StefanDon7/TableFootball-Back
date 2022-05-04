@@ -14,4 +14,10 @@ public interface PlayerRepository {
     Player getPlayerByUsername(String username, String password);
 
     Player getPlayerByEmail(String email, String password);
+
+    Player add(Player player);
+
+    Player update(Player player);
+
+    Player delete(String uuid);
 }

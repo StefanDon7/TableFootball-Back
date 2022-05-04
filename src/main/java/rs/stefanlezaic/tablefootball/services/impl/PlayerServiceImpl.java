@@ -3,6 +3,7 @@ package rs.stefanlezaic.tablefootball.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import rs.stefanlezaic.tablefootball.model.Match;
 import rs.stefanlezaic.tablefootball.model.Player;
 import rs.stefanlezaic.tablefootball.repository.PlayerRepository;
 import rs.stefanlezaic.tablefootball.services.PlayerService;
@@ -34,6 +35,18 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public Player getPlayerByEmail(String email, String password) {
-        return playerRepository.getPlayerByUsername(email, password);
+        return playerRepository.getPlayerByEmail(email, password);
+    }
+
+    public Player add(Player player) {
+        return playerRepository.add(player);
+    }
+
+    public Player update(Player player) {
+        return playerRepository.update(player);
+    }
+
+    public Player delete(String uuid) {
+        return playerRepository.delete(uuid);
     }
 }

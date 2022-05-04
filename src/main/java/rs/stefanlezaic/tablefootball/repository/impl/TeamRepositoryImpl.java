@@ -1,12 +1,12 @@
 package rs.stefanlezaic.tablefootball.repository.impl;
 
 import org.springframework.stereotype.Repository;
-import rs.stefanlezaic.tablefootball.model.Player;
 import rs.stefanlezaic.tablefootball.model.Team;
 import rs.stefanlezaic.tablefootball.repository.TeamRepository;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class TeamRepositoryImpl implements TeamRepository {
@@ -41,5 +41,28 @@ public class TeamRepositoryImpl implements TeamRepository {
                 team.getAttack().getUuid().equals(firstPlayerUUID)
                         || team.getDefence().getUuid().equals(secondPlayerUUID)
         ).findFirst().orElse(null);
+    }
+
+    @Override
+    public Team add(Team team) {
+        teams.add(team);
+        return team;
+    }
+
+    @Override
+    public Team update(Team team) {
+        teams.stream().filter(item -> item.getUuid().equals(team.getUuid())).findFirst().ifPresent(t -> {
+            teams = teams.stream().filter(item -> item.getUuid().equals(team.getUuid())).collect(Collectors.toList());
+            int index = teams.indexOf(t);
+            teams.add(index, team);
+        });
+        return team;
+    }
+
+    @Override
+    public Team delete(String uuid) {
+        Team fined = teams.stream().filter(item -> item.getUuid().equals(uuid)).findFirst().orElse(null);
+        teams = teams.stream().filter(item -> !item.getUuid().equals(uuid)).collect(Collectors.toList());
+        return fined;
     }
 }

@@ -14,4 +14,11 @@ public interface MatchRepository {
     List<Match> getMatchesByUser(String uuid);
 
     List<Match> getMatchesByTeam(String uuid);
+
+    Match add(Match match);
+
+    Match update(Match match);
+
+    Match delete(String uuid);
+
 }

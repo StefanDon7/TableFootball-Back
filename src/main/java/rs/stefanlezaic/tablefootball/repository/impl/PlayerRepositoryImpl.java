@@ -6,6 +6,7 @@ import rs.stefanlezaic.tablefootball.repository.PlayerRepository;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class PlayerRepositoryImpl implements PlayerRepository {
@@ -34,5 +35,28 @@ public class PlayerRepositoryImpl implements PlayerRepository {
     @Override
     public Player getPlayerByEmail(String email, String password) {
         return players.stream().filter(player -> player.getUuid().equals(email) && player.getPassword().equals(password)).findFirst().orElse(null);
+    }
+
+    @Override
+    public Player add(Player player) {
+        players.add(player);
+        return player;
+    }
+
+    @Override
+    public Player update(Player player) {
+        players.stream().filter(item -> item.getUuid().equals(player.getUuid())).findFirst().ifPresent(p -> {
+            players = players.stream().filter(item -> item.getUuid().equals(player.getUuid())).collect(Collectors.toList());
+            int index = players.indexOf(p);
+            players.add(index, player);
+        });
+        return player;
+    }
+
+    @Override
+    public Player delete(String uuid) {
+        Player fined = players.stream().filter(item -> item.getUuid().equals(uuid)).findFirst().orElse(null);
+        players = players.stream().filter(item -> !item.getUuid().equals(uuid)).collect(Collectors.toList());
+        return fined;
     }
 }
