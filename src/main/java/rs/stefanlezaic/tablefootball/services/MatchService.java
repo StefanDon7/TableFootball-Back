@@ -7,7 +7,7 @@ import java.util.List;
 @Service
 public interface MatchService {
     Match getMatch(String uuid);
-    List<Match> getAll();
-    List<Match> getMatchByUser(String uuid);
-    List<Match> getMatchByTeam(String uuid);
+    List<Match> getAllMatches();
+    List<Match> getMatchesByUser(String uuid);
+    List<Match> getMatchesByTeam(String uuid);
 }
