@@ -1,7 +1,6 @@
 package rs.stefanlezaic.tablefootball.repository;
 
 import org.springframework.stereotype.Repository;
-import rs.stefanlezaic.tablefootball.model.Match;
 import rs.stefanlezaic.tablefootball.model.Team;
 
 import java.util.List;

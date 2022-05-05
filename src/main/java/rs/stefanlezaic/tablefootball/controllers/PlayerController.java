@@ -33,4 +33,19 @@ public class PlayerController {
     Player getPlayerByPlayerName(@RequestBody Player player) {
         return playerService.getPlayerByUsername(player.getPlayerName(), player.getPassword());
     }
+
+    @PostMapping("/add")
+    Player addPlayer(@RequestBody Player player) {
+        return playerService.add(player);
+    }
+
+    @PutMapping("/update")
+    Player updatePlayer(@RequestBody Player player) {
+        return playerService.update(player);
+    }
+
+    @DeleteMapping("/delete")
+    Player deletePlayer(@RequestBody String uuid) {
+        return playerService.delete(uuid);
+    }
 }

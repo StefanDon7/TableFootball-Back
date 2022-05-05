@@ -34,8 +34,23 @@ public class MatchController {
         return matchService.getMatchesByTeam(uuid);
     }
 
-    public Match add(@RequestBody Match match){
+    public Match add(@RequestBody Match match) {
         return matchService.add(match);
+    }
+
+    @PostMapping("/add")
+    Match addPlayer(@RequestBody Match match) {
+        return matchService.add(match);
+    }
+
+    @PutMapping("/update")
+    Match updatePlayer(@RequestBody Match match) {
+        return matchService.update(match);
+    }
+
+    @DeleteMapping("/delete")
+    Match deleteTeam(@RequestBody String uuid) {
+        return matchService.delete(uuid);
     }
 
 }

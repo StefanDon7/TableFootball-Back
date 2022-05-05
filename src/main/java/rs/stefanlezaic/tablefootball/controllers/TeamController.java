@@ -35,4 +35,19 @@ public class TeamController {
         return teamService.getTeamByPlayers(attackerUuid, defenderUuid);
     }
 
+    @PostMapping("/add")
+    Team addPlayer(@RequestBody Team team) {
+        return teamService.add(team);
+    }
+
+    @PutMapping("/update")
+    Team updatePlayer(@RequestBody Team team) {
+        return teamService.update(team);
+    }
+
+    @DeleteMapping("/delete")
+    Team deleteTeam(@RequestBody String uuid) {
+        return teamService.delete(uuid);
+    }
+
 }

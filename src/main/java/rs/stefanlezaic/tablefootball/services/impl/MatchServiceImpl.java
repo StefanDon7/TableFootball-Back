@@ -36,14 +36,17 @@ public class MatchServiceImpl implements MatchService {
         return matchRepository.getMatchesByTeam(uuid);
     }
 
+    @Override
     public Match add(Match match) {
         return matchRepository.add(match);
     }
 
+    @Override
     public Match update(Match match) {
         return matchRepository.update(match);
     }
 
+    @Override
     public Match delete(String uuid) {
         return matchRepository.delete(uuid);
     }

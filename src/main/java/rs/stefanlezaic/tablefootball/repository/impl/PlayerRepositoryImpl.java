@@ -19,6 +19,7 @@ public class PlayerRepositoryImpl implements PlayerRepository {
 
     @Override
     public List<Player> getAllPlayers() {
+        System.out.println("List players:" + players);
         return players;
     }
 
