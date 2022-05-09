@@ -1,18 +1,27 @@
-package rs.stefanlezaic.tablefootball.services.impl;
+package rs.stefanlezaic.tablefootball.services.impl.jpa;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import rs.stefanlezaic.tablefootball.model.Team;
-import rs.stefanlezaic.tablefootball.repository.TeamRepository;
+import rs.stefanlezaic.tablefootball.repository.simulation.TeamRepository;
 import rs.stefanlezaic.tablefootball.services.TeamService;
 
 import java.util.List;
 
 @Service
-public class TeamServiceImpl implements TeamService {
+@Transactional
+@Primary
+public class TeamServiceJpaImpl implements TeamService {
+
+    private final TeamRepository teamRepository;
 
     @Autowired
-    private TeamRepository teamRepository;
+    public TeamServiceJpaImpl(TeamRepository teamRepository) {
+        this.teamRepository = teamRepository;
+    }
 
     @Override
     public List<Team> getAllTeams() {

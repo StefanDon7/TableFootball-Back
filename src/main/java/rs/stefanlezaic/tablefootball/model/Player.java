@@ -1,11 +1,20 @@
 package rs.stefanlezaic.tablefootball.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Player {
+    @Id
+    @Column(nullable=false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(unique=true, nullable = false)
     private String uuid;
     private String firstName;
     private String lastName;
+    @Column(unique=true, nullable = false)
     private String playerName;
+    @Column(unique=true, nullable = false)
     private String email;
     private String password;
 

@@ -1,6 +1,7 @@
 package rs.stefanlezaic.tablefootball.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import rs.stefanlezaic.tablefootball.model.Player;
 import rs.stefanlezaic.tablefootball.services.PlayerService;
@@ -11,8 +12,12 @@ import java.util.List;
 @RequestMapping("/api/player")
 public class PlayerController {
 
+    private final PlayerService playerService;
+
     @Autowired
-    private PlayerService playerService;
+    public PlayerController(PlayerService playerService) {
+        this.playerService = playerService;
+    }
 
     @GetMapping("/all")
     List<Player> getAllPlayers() {

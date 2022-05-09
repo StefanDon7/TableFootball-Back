@@ -11,7 +11,7 @@ public interface MatchService {
 
     List<Match> getAllMatches();
 
-    List<Match> getMatchesByUser(String uuid);
+    List<Match> getMatchesByPlayer(String uuid);
 
     List<Match> getMatchesByTeam(String uuid);
 

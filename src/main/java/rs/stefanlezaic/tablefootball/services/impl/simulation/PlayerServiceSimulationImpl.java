@@ -1,17 +1,17 @@
-package rs.stefanlezaic.tablefootball.services.impl;
+package rs.stefanlezaic.tablefootball.services.impl.simulation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import rs.stefanlezaic.tablefootball.model.Player;
-import rs.stefanlezaic.tablefootball.repository.PlayerRepository;
+import rs.stefanlezaic.tablefootball.repository.simulation.PlayerRepository;
 import rs.stefanlezaic.tablefootball.services.PlayerService;
 
 import java.util.List;
 
 @Service
 @Transactional
-public class PlayerServiceImpl implements PlayerService {
+public class PlayerServiceSimulationImpl implements PlayerService {
 
     @Autowired
     private PlayerRepository playerRepository;

@@ -1,9 +1,9 @@
-package rs.stefanlezaic.tablefootball.services.impl;
+package rs.stefanlezaic.tablefootball.services.impl.simulation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.stefanlezaic.tablefootball.model.Match;
-import rs.stefanlezaic.tablefootball.repository.MatchRepository;
+import rs.stefanlezaic.tablefootball.repository.simulation.MatchRepository;
 import org.springframework.transaction.annotation.Transactional;
 import rs.stefanlezaic.tablefootball.services.MatchService;
 
@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class MatchServiceImpl implements MatchService {
+public class MatchServiceSimulationImpl implements MatchService {
 
     @Autowired
     private MatchRepository matchRepository;
@@ -27,7 +27,7 @@ public class MatchServiceImpl implements MatchService {
     }
 
     @Override
-    public List<Match> getMatchesByUser(String uuid) {
+    public List<Match> getMatchesByPlayer(String uuid) {
         return matchRepository.getMatchesByUser(uuid);
     }
 

@@ -1,8 +1,8 @@
-package rs.stefanlezaic.tablefootball.repository.impl;
+package rs.stefanlezaic.tablefootball.repository.simulation.impl;
 
 import org.springframework.stereotype.Repository;
 import rs.stefanlezaic.tablefootball.model.Team;
-import rs.stefanlezaic.tablefootball.repository.TeamRepository;
+import rs.stefanlezaic.tablefootball.repository.simulation.TeamRepository;
 
 import java.util.LinkedList;
 import java.util.List;

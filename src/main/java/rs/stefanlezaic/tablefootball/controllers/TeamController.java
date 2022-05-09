@@ -1,6 +1,7 @@
 package rs.stefanlezaic.tablefootball.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import rs.stefanlezaic.tablefootball.model.Team;
 import rs.stefanlezaic.tablefootball.services.TeamService;
@@ -11,8 +12,12 @@ import java.util.List;
 @RequestMapping("/api/team")
 public class TeamController {
 
+    private final TeamService teamService;
+
     @Autowired
-    private TeamService teamService;
+    public TeamController(TeamService teamService) {
+        this.teamService = teamService;
+    }
 
     @GetMapping("/all")
     public List<Team> getAllTeams() {

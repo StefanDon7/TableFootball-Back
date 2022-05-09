@@ -1,4 +1,4 @@
-package rs.stefanlezaic.tablefootball.repository;
+package rs.stefanlezaic.tablefootball.repository.simulation;
 
 import org.springframework.stereotype.Repository;
 import rs.stefanlezaic.tablefootball.model.Player;

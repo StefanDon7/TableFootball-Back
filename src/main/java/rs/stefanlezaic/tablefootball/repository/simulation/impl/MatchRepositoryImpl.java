@@ -1,8 +1,8 @@
-package rs.stefanlezaic.tablefootball.repository.impl;
+package rs.stefanlezaic.tablefootball.repository.simulation.impl;
 
 import org.springframework.stereotype.Repository;
 import rs.stefanlezaic.tablefootball.model.Match;
-import rs.stefanlezaic.tablefootball.repository.MatchRepository;
+import rs.stefanlezaic.tablefootball.repository.simulation.MatchRepository;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -48,7 +48,8 @@ public class MatchRepositoryImpl implements MatchRepository {
 
     @Override
     public Match add(Match match) {
-        return null;
+        matches.add(match);
+        return match;
     }
 
     @Override
