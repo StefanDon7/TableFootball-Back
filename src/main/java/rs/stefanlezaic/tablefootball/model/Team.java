@@ -1,50 +1,34 @@
 package rs.stefanlezaic.tablefootball.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class Team {
+    @Id
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
     private long id;
     private String uuid;
+
+    @OneToOne
+    @JoinColumn(
+            name = "defence_id",
+            referencedColumnName = "id"
+    )
     private Player defence;
+    @OneToOne
+    @JoinColumn(
+            name = "attack_id",
+            referencedColumnName = "id"
+    )
     private Player attack;
 
-    public Team() {
-    }
-
-    public Team(long id, String uuid, Player defence, Player attack) {
-        this.id = id;
-        this.uuid = uuid;
-        this.defence = defence;
-        this.attack = attack;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-    public Player getDefence() {
-        return defence;
-    }
-
-    public void setDefence(Player defence) {
-        this.defence = defence;
-    }
-
-    public Player getAttack() {
-        return attack;
-    }
-
-    public void setAttack(Player attack) {
-        this.attack = attack;
-    }
 }
