@@ -1,10 +1,25 @@
 package rs.stefanlezaic.tablefootball.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Team {
+
+    @Id
+    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(unique = true, nullable = false)
     private String uuid;
-    private Player defence;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "attackId", referencedColumnName = "id")
     private Player attack;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "defenceId", referencedColumnName = "id")
+    private Player defence;
+
 
     public Team() {
     }

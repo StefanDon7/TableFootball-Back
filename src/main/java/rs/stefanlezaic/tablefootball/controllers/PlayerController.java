@@ -5,14 +5,19 @@ import org.springframework.web.bind.annotation.*;
 import rs.stefanlezaic.tablefootball.model.Player;
 import rs.stefanlezaic.tablefootball.services.PlayerService;
 
+
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/player")
 public class PlayerController {
 
+    private final PlayerService playerService;
+
     @Autowired
-    private PlayerService playerService;
+    public PlayerController(PlayerService playerService) {
+        this.playerService = playerService;
+    }
 
     @GetMapping("/all")
     List<Player> getAllPlayers() {
@@ -31,6 +36,21 @@ public class PlayerController {
 
     @PostMapping("/by-name")
     Player getPlayerByPlayerName(@RequestBody Player player) {
-        return playerService.getPlayerByUsername(player.getPlayerName(), player.getPassword());
+        return playerService.getPlayerByPlayerName(player.getPlayerName(), player.getPassword());
+    }
+
+    @PostMapping("/add")
+    Player addPlayer(@RequestBody Player player) {
+        return playerService.add(player);
+    }
+
+    @PutMapping("/update")
+    Player updatePlayer(@RequestBody Player player) {
+        return playerService.update(player);
+    }
+
+    @DeleteMapping("/delete")
+    Player deletePlayer(@RequestBody String uuid) {
+        return playerService.delete(uuid);
     }
 }

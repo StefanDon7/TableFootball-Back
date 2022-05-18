@@ -17,4 +17,9 @@ public interface TeamService {
 
     Team getTeamByPlayers(String firstPlayerUUID, String secondPlayerUUID);
 
+    Team add(Team team);
+
+    Team update(Team team);
+
+    Team delete(String uuid);
 }

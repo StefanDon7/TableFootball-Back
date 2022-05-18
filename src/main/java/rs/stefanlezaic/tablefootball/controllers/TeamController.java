@@ -11,8 +11,12 @@ import java.util.List;
 @RequestMapping("/api/team")
 public class TeamController {
 
+    private final TeamService teamService;
+
     @Autowired
-    private TeamService teamService;
+    public TeamController(TeamService teamService) {
+        this.teamService = teamService;
+    }
 
     @GetMapping("/all")
     public List<Team> getAllTeams() {
@@ -33,6 +37,21 @@ public class TeamController {
     public Team getTeamByPlayers(@PathVariable("attackerUuid") String attackerUuid,
                                  @PathVariable("defenderUuid") String defenderUuid) {
         return teamService.getTeamByPlayers(attackerUuid, defenderUuid);
+    }
+
+    @PostMapping("/add")
+    Team addPlayer(@RequestBody Team team) {
+        return teamService.add(team);
+    }
+
+    @PutMapping("/update")
+    Team updatePlayer(@RequestBody Team team) {
+        return teamService.update(team);
+    }
+
+    @DeleteMapping("/delete")
+    Team deleteTeam(@RequestBody String uuid) {
+        return teamService.delete(uuid);
     }
 
 }

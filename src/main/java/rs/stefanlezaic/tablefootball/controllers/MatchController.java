@@ -11,8 +11,12 @@ import java.util.List;
 @RequestMapping("/api/match")
 public class MatchController {
 
+    private final MatchService matchService;
+
     @Autowired
-    private MatchService matchService;
+    public MatchController(MatchService matchService) {
+        this.matchService = matchService;
+    }
 
     @GetMapping("/{uuid}")
     public Match getMatch(@PathVariable String uuid) {
@@ -24,8 +28,29 @@ public class MatchController {
         return matchService.getAllMatches();
     }
 
-    @PostMapping("/by-user/{uuid}")
-    List<Match> getMatchesByUser(@PathVariable String uuid) {
-        return matchService.getMatchesByUser(uuid);
+    @GetMapping("/by-user/{uuid}")
+    public List<Match> getMatchesByPlayer(@PathVariable String uuid) {
+        return matchService.getMatchesByPlayer(uuid);
     }
+
+    @GetMapping("/by-team/{uuid}")
+    public List<Match> getMatchesByTeam(@PathVariable String uuid) {
+        return matchService.getMatchesByTeam(uuid);
+    }
+
+    @PostMapping("/add")
+    public Match addPlayer(@RequestBody Match match) {
+        return matchService.add(match);
+    }
+
+    @PutMapping("/update")
+    Match updatePlayer(@RequestBody Match match) {
+        return matchService.update(match);
+    }
+
+    @DeleteMapping("/delete")
+    Match deleteTeam(@RequestBody String uuid) {
+        return matchService.delete(uuid);
+    }
+
 }
