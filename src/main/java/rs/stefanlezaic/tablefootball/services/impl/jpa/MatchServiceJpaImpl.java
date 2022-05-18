@@ -24,27 +24,27 @@ public class MatchServiceJpaImpl implements MatchService {
     }
 
     @Override
-    public Match getMatch(String uuid) {
+    public Match getByUuid(String uuid) {
         return matchRepository.getByUuid(uuid);
     }
 
     @Override
-    public List<Match> getAllMatches() {
+    public List<Match> findAll() {
         return matchRepository.findAll();
     }
 
     @Override
-    public List<Match> getMatchesByPlayer(String uuid) {
+    public List<Match> findByPlayerUuid(String uuid) {
         return matchRepository.findByPlayerUuid(uuid);
     }
 
     @Override
-    public List<Match> getMatchesByTeam(String uuid) {
+    public List<Match> findByTeamUuid(String uuid) {
         return matchRepository.findByTeamUuid(uuid);
     }
 
     @Override
-    public Match add(Match match) {
+    public Match save(Match match) {
         match.setUuid(String.valueOf(UUID.randomUUID()));
         return matchRepository.save(match);
     }
@@ -55,7 +55,7 @@ public class MatchServiceJpaImpl implements MatchService {
     }
 
     @Override
-    public Match delete(String uuid) {
+    public Match deleteByUuid(String uuid) {
         return matchRepository.deleteByUuid(uuid);
     }
 }

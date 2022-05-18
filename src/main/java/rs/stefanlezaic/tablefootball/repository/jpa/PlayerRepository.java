@@ -11,10 +11,10 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
 
     Player getByUuid(String uuid);
 
-    @Query(value = "select p from Player p where p.playerName=:playerName and password=?2")
+    @Query(value = "select p from Player p where p.playerName=:playerName and p.password=:password")
     Player findByUsernameAndPassword(@Param("playerName") String playerName, @Param("password") String password);
 
-    @Query(value = "select * from player where email=?1 and password=?2", nativeQuery = true)
+    @Query(value = "select p from Player p where p.email=:email and p.password=:password")
     Player findByEmailAndPassword(String email, String password);
 
     Player deleteByUuid(String uuid);

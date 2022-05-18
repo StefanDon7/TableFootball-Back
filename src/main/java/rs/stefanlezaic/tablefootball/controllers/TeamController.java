@@ -20,28 +20,28 @@ public class TeamController {
 
     @GetMapping("/all")
     public List<Team> getAllTeams() {
-        return teamService.getAllTeams();
+        return teamService.findAll();
     }
 
     @GetMapping("/{uuid}")
     public Team getTeamByUUID(@PathVariable("uuid") String uuid) {
-        return teamService.getTeamByUUID(uuid);
+        return teamService.getByUuid(uuid);
     }
 
     @GetMapping("/by-player/{uuid}")
     public Team getTeamByPlayer(@PathVariable("uuid") String uuid) {
-        return teamService.getTeamByPlayer(uuid);
+        return teamService.findByPlayerUuid(uuid);
     }
 
     @GetMapping("/attacker/{attackerUuid}/defender/{defenderUuid}")
     public Team getTeamByPlayers(@PathVariable("attackerUuid") String attackerUuid,
                                  @PathVariable("defenderUuid") String defenderUuid) {
-        return teamService.getTeamByPlayers(attackerUuid, defenderUuid);
+        return teamService.findTeamByPlayers(attackerUuid, defenderUuid);
     }
 
     @PostMapping("/add")
     Team addPlayer(@RequestBody Team team) {
-        return teamService.add(team);
+        return teamService.save(team);
     }
 
     @PutMapping("/update")
@@ -51,7 +51,7 @@ public class TeamController {
 
     @DeleteMapping("/delete")
     Team deleteTeam(@RequestBody String uuid) {
-        return teamService.delete(uuid);
+        return teamService.deleteByUuid(uuid);
     }
 
 }

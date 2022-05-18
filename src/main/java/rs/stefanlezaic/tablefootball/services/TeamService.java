@@ -9,17 +9,17 @@ import java.util.List;
 @Service
 public interface TeamService {
 
-    List<Team> getAllTeams();
+    List<Team> findAll();
 
-    Team getTeamByUUID(String uuid);
+    Team getByUuid(String uuid);
 
-    Team getTeamByPlayer(String uuid);
+    Team findByPlayerUuid(String uuid);
 
-    Team getTeamByPlayers(String firstPlayerUUID, String secondPlayerUUID);
+    Team findTeamByPlayers(String firstPlayerUUID, String secondPlayerUUID);
 
-    Team add(Team team);
+    Team save(Team team);
 
     Team update(Team team);
 
-    Team delete(String uuid);
+    Team deleteByUuid(String uuid);
 }

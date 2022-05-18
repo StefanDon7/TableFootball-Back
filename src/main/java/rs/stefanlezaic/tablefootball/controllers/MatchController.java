@@ -19,38 +19,38 @@ public class MatchController {
     }
 
     @GetMapping("/{uuid}")
-    public Match getMatch(@PathVariable String uuid) {
-        return matchService.getMatch(uuid);
+    public Match getByUuid(@PathVariable String uuid) {
+        return matchService.getByUuid(uuid);
     }
 
     @GetMapping("/all")
-    public List<Match> getAllMatches() {
-        return matchService.getAllMatches();
+    public List<Match> findAll() {
+        return matchService.findAll();
     }
 
-    @GetMapping("/by-user/{uuid}")
-    public List<Match> getMatchesByPlayer(@PathVariable String uuid) {
-        return matchService.getMatchesByPlayer(uuid);
+    @GetMapping("/by-player/{uuid}")
+    public List<Match> findByPlayerUuid(@PathVariable String uuid) {
+        return matchService.findByPlayerUuid(uuid);
     }
 
     @GetMapping("/by-team/{uuid}")
-    public List<Match> getMatchesByTeam(@PathVariable String uuid) {
-        return matchService.getMatchesByTeam(uuid);
+    public List<Match> findByTeamUuid(@PathVariable String uuid) {
+        return matchService.findByTeamUuid(uuid);
     }
 
     @PostMapping("/add")
-    public Match addPlayer(@RequestBody Match match) {
-        return matchService.add(match);
+    public Match save(@RequestBody Match match) {
+        return matchService.save(match);
     }
 
     @PutMapping("/update")
-    Match updatePlayer(@RequestBody Match match) {
+    Match update(@RequestBody Match match) {
         return matchService.update(match);
     }
 
-    @DeleteMapping("/delete")
-    Match deleteTeam(@RequestBody String uuid) {
-        return matchService.delete(uuid);
+    @DeleteMapping("/deleteByUuid")
+    Match deleteByUuid(@RequestBody String uuid) {
+        return matchService.deleteByUuid(uuid);
     }
 
 }

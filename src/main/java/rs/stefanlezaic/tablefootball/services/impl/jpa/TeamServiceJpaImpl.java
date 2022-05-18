@@ -25,38 +25,38 @@ public class TeamServiceJpaImpl implements TeamService {
     }
 
     @Override
-    public List<Team> getAllTeams() {
+    public List<Team> findAll() {
         return teamRepository.findAll();
     }
 
     @Override
-    public Team getTeamByUUID(String uuid) {
+    public Team getByUuid(String uuid) {
         return teamRepository.getByUuid(uuid);
     }
 
     @Override
-    public Team getTeamByPlayer(String uuid) {
+    public Team findByPlayerUuid(String uuid) {
         return teamRepository.findByPlayerUuid(uuid);
     }
 
     @Override
-    public Team getTeamByPlayers(String firstPlayerUUID, String secondPlayerUUID) {
+    public Team findTeamByPlayers(String firstPlayerUUID, String secondPlayerUUID) {
         return teamRepository.findTeamByPlayers(firstPlayerUUID, secondPlayerUUID);
     }
 
     @Override
-    public Team add(Team team) {
+    public Team save(Team team) {
         team.setUuid(String.valueOf(UUID.randomUUID()));
         return teamRepository.save(team);
     }
 
     @Override
     public Team update(Team team) {
-        return teamRepository.save(team);
+        return teamRepository.saveAndFlush(team);
     }
 
     @Override
-    public Team delete(String uuid) {
+    public Team deleteByUuid(String uuid) {
         return teamRepository.deleteByUuid(uuid);
     }
 }

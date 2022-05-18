@@ -7,17 +7,17 @@ import java.util.List;
 
 @Service
 public interface PlayerService {
-    List<Player> getAllPlayers();
+    List<Player> findAll();
 
-    Player getPlayerByUUID(String uuid);
+    Player getByUuid(String uuid);
 
-    Player getPlayerByPlayerName(String playerName, String password);
+    Player findByUsernameAndPassword(String playerName, String password);
 
-    Player getPlayerByEmail(String email, String password);
+    Player findByEmailAndPassword(String email, String password);
 
-    Player add(Player player);
+    Player save(Player player);
 
     Player update(Player player);
 
-    Player delete(String uuid);
+    Player deleteByUuid(String uuid);
 }

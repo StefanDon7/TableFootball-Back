@@ -7,17 +7,17 @@ import java.util.List;
 
 @Service
 public interface MatchService {
-    Match getMatch(String uuid);
+    Match getByUuid(String uuid);
 
-    List<Match> getAllMatches();
+    List<Match> findAll();
 
-    List<Match> getMatchesByPlayer(String uuid);
+    List<Match> findByPlayerUuid(String uuid);
 
-    List<Match> getMatchesByTeam(String uuid);
+    List<Match> findByTeamUuid(String uuid);
 
-    Match add(Match match);
+    Match save(Match match);
 
     Match update(Match match);
 
-    Match delete(String uuid);
+    Match deleteByUuid(String uuid);
 }

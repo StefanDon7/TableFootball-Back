@@ -21,27 +21,27 @@ public class PlayerController {
 
     @GetMapping("/all")
     List<Player> getAllPlayers() {
-        return playerService.getAllPlayers();
+        return playerService.findAll();
     }
 
     @GetMapping("/{uuid}")
     Player getPlayerByUUID(@PathVariable String uuid) {
-        return playerService.getPlayerByUUID(uuid);
+        return playerService.getByUuid(uuid);
     }
 
     @PostMapping("/by-email")
     Player getPlayerByUUID(@RequestBody Player player) {
-        return playerService.getPlayerByEmail(player.getEmail(), player.getPassword());
+        return playerService.findByEmailAndPassword(player.getEmail(), player.getPassword());
     }
 
     @PostMapping("/by-name")
     Player getPlayerByPlayerName(@RequestBody Player player) {
-        return playerService.getPlayerByPlayerName(player.getPlayerName(), player.getPassword());
+        return playerService.findByUsernameAndPassword(player.getPlayerName(), player.getPassword());
     }
 
     @PostMapping("/add")
     Player addPlayer(@RequestBody Player player) {
-        return playerService.add(player);
+        return playerService.save(player);
     }
 
     @PutMapping("/update")
@@ -51,6 +51,6 @@ public class PlayerController {
 
     @DeleteMapping("/delete")
     Player deletePlayer(@RequestBody String uuid) {
-        return playerService.delete(uuid);
+        return playerService.deleteByUuid(uuid);
     }
 }

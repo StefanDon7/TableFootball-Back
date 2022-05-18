@@ -26,39 +26,38 @@ public class PlayerServiceJpaImpl implements PlayerService {
     }
 
     @Override
-    public List<Player> getAllPlayers() {
+    public List<Player> findAll() {
         return playerRepository.findAll();
     }
 
     @Override
-    public Player getPlayerByUUID(String uuid) {
+    public Player getByUuid(String uuid) {
         return playerRepository.getByUuid(uuid);
     }
 
     @Override
-    public Player getPlayerByPlayerName(String playerName, String password) {
+    public Player findByUsernameAndPassword(String playerName, String password) {
         return playerRepository.findByUsernameAndPassword(playerName, password);
-
     }
 
     @Override
-    public Player getPlayerByEmail(String email, String password) {
+    public Player findByEmailAndPassword(String email, String password) {
         return playerRepository.findByEmailAndPassword(email, password);
     }
 
     @Override
-    public Player add(Player player) {
+    public Player save(Player player) {
         player.setUuid(String.valueOf(UUID.randomUUID()));
         return playerRepository.save(player);
     }
 
     @Override
     public Player update(Player player) {
-        return playerRepository.save(player);
+        return playerRepository.saveAndFlush(player);
     }
 
     @Override
-    public Player delete(String uuid) {
+    public Player deleteByUuid(String uuid) {
         return playerRepository.deleteByUuid(uuid);
     }
 }
