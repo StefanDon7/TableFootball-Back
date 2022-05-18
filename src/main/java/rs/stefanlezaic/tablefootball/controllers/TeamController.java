@@ -1,7 +1,6 @@
 package rs.stefanlezaic.tablefootball.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import rs.stefanlezaic.tablefootball.model.Team;
 import rs.stefanlezaic.tablefootball.services.TeamService;

@@ -1,7 +1,6 @@
 package rs.stefanlezaic.tablefootball.services.impl.jpa;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,6 +9,7 @@ import rs.stefanlezaic.tablefootball.repository.jpa.MatchRepository;
 import rs.stefanlezaic.tablefootball.services.MatchService;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -45,6 +45,7 @@ public class MatchServiceJpaImpl implements MatchService {
 
     @Override
     public Match add(Match match) {
+        match.setUuid(String.valueOf(UUID.randomUUID()));
         return matchRepository.save(match);
     }
 

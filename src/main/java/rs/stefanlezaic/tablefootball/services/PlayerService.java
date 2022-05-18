@@ -11,7 +11,7 @@ public interface PlayerService {
 
     Player getPlayerByUUID(String uuid);
 
-    Player getPlayerByUsername(String username, String password);
+    Player getPlayerByPlayerName(String playerName, String password);
 
     Player getPlayerByEmail(String email, String password);
 

@@ -11,6 +11,7 @@ import rs.stefanlezaic.tablefootball.repository.jpa.PlayerRepository;
 import rs.stefanlezaic.tablefootball.services.PlayerService;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -31,12 +32,12 @@ public class PlayerServiceJpaImpl implements PlayerService {
 
     @Override
     public Player getPlayerByUUID(String uuid) {
-        return playerRepository.findByUuid(uuid);
+        return playerRepository.getByUuid(uuid);
     }
 
     @Override
-    public Player getPlayerByUsername(String username, String password) {
-        return playerRepository.findByUsernameAndPassword(username, password);
+    public Player getPlayerByPlayerName(String playerName, String password) {
+        return playerRepository.findByUsernameAndPassword(playerName, password);
 
     }
 
@@ -47,6 +48,7 @@ public class PlayerServiceJpaImpl implements PlayerService {
 
     @Override
     public Player add(Player player) {
+        player.setUuid(String.valueOf(UUID.randomUUID()));
         return playerRepository.save(player);
     }
 

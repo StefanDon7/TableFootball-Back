@@ -38,12 +38,8 @@ public class MatchController {
         return matchService.getMatchesByTeam(uuid);
     }
 
-    public Match add(@RequestBody Match match) {
-        return matchService.add(match);
-    }
-
     @PostMapping("/add")
-    Match addPlayer(@RequestBody Match match) {
+    public Match addPlayer(@RequestBody Match match) {
         return matchService.add(match);
     }
 

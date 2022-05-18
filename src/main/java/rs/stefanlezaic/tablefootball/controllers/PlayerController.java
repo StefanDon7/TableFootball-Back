@@ -1,10 +1,10 @@
 package rs.stefanlezaic.tablefootball.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import rs.stefanlezaic.tablefootball.model.Player;
 import rs.stefanlezaic.tablefootball.services.PlayerService;
+
 
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class PlayerController {
 
     @PostMapping("/by-name")
     Player getPlayerByPlayerName(@RequestBody Player player) {
-        return playerService.getPlayerByUsername(player.getPlayerName(), player.getPassword());
+        return playerService.getPlayerByPlayerName(player.getPlayerName(), player.getPassword());
     }
 
     @PostMapping("/add")
