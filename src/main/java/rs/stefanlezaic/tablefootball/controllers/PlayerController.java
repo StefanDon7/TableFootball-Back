@@ -13,7 +13,6 @@ import java.util.List;
 public class PlayerController {
 
     private final PlayerService playerService;
-
     @Autowired
     public PlayerController(PlayerService playerService) {
         this.playerService = playerService;
@@ -25,32 +24,32 @@ public class PlayerController {
     }
 
     @GetMapping("/{uuid}")
-    Player getPlayerByUUID(@PathVariable String uuid) {
+    public Player getPlayerByUUID(@PathVariable String uuid) {
         return playerService.getByUuid(uuid);
     }
 
     @PostMapping("/by-email")
-    Player getPlayerByUUID(@RequestBody Player player) {
+    public Player getPlayerByUUID(@RequestBody Player player) {
         return playerService.findByEmailAndPassword(player.getEmail(), player.getPassword());
     }
 
     @PostMapping("/by-name")
-    Player getPlayerByPlayerName(@RequestBody Player player) {
+    public Player getPlayerByPlayerName(@RequestBody Player player) {
         return playerService.findByUsernameAndPassword(player.getPlayerName(), player.getPassword());
     }
 
     @PostMapping("/add")
-    Player addPlayer(@RequestBody Player player) {
+    public Player addPlayer(@RequestBody Player player) {
         return playerService.save(player);
     }
 
     @PutMapping("/update")
-    Player updatePlayer(@RequestBody Player player) {
+    public Player updatePlayer(@RequestBody Player player) {
         return playerService.update(player);
     }
 
     @DeleteMapping("/delete")
-    Player deletePlayer(@RequestBody String uuid) {
+    public Player deletePlayer(@RequestBody String uuid) {
         return playerService.deleteByUuid(uuid);
     }
 }
