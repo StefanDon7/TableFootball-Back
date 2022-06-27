@@ -1,25 +1,24 @@
 package rs.stefanlezaic.tablefootball.services;
 
 import org.springframework.stereotype.Service;
-import rs.stefanlezaic.tablefootball.model.Player;
-import rs.stefanlezaic.tablefootball.model.Team;
+import rs.stefanlezaic.tablefootball.model.entity.TeamEntity;
 
 import java.util.List;
 
 @Service
 public interface TeamService {
 
-    List<Team> findAll();
+    List<TeamEntity> findAll();
 
-    Team getByUuid(String uuid);
+    TeamEntity getByUuid(String uuid);
 
-    Team findByPlayerUuid(String uuid);
+    TeamEntity findByPlayerUuid(String uuid);
 
-    Team findTeamByPlayers(String firstPlayerUUID, String secondPlayerUUID);
+    TeamEntity findTeamByPlayers(String firstPlayerUUID, String secondPlayerUUID);
 
-    Team save(Team team);
+    TeamEntity save(TeamEntity teamEntity);
 
-    Team update(Team team);
+    TeamEntity update(TeamEntity teamEntity);
 
-    Team deleteByUuid(String uuid);
+    TeamEntity deleteByUuid(String uuid);
 }

@@ -1,4 +1,4 @@
-package rs.stefanlezaic.tablefootball.config;
+package rs.stefanlezaic.tablefootball.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -9,13 +9,17 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import rs.stefanlezaic.tablefootball.services.MyUserDetailsService;
+import rs.stefanlezaic.tablefootball.services.auth.MyUserDetailsService;
 
 @EnableWebSecurity
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
+    private final MyUserDetailsService myUserDetailsService;
+
     @Autowired
-    private MyUserDetailsService myUserDetailsService;
+    public SecurityConfigurer(MyUserDetailsService myUserDetailsService) {
+        this.myUserDetailsService = myUserDetailsService;
+    }
 
 
     @Override

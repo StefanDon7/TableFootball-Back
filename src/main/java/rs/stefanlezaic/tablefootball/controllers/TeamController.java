@@ -2,7 +2,7 @@ package rs.stefanlezaic.tablefootball.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import rs.stefanlezaic.tablefootball.model.Team;
+import rs.stefanlezaic.tablefootball.model.entity.TeamEntity;
 import rs.stefanlezaic.tablefootball.services.TeamService;
 
 import java.util.List;
@@ -19,38 +19,38 @@ public class TeamController {
     }
 
     @GetMapping("/all")
-    public List<Team> getAllTeams() {
+    public List<TeamEntity> getAllTeams() {
         return teamService.findAll();
     }
 
     @GetMapping("/{uuid}")
-    public Team getTeamByUUID(@PathVariable("uuid") String uuid) {
+    public TeamEntity getTeamByUUID(@PathVariable("uuid") String uuid) {
         return teamService.getByUuid(uuid);
     }
 
     @GetMapping("/by-player/{uuid}")
-    public Team getTeamByPlayer(@PathVariable("uuid") String uuid) {
+    public TeamEntity getTeamByPlayer(@PathVariable("uuid") String uuid) {
         return teamService.findByPlayerUuid(uuid);
     }
 
     @GetMapping("/attacker/{attackerUuid}/defender/{defenderUuid}")
-    public Team getTeamByPlayers(@PathVariable("attackerUuid") String attackerUuid,
-                                 @PathVariable("defenderUuid") String defenderUuid) {
+    public TeamEntity getTeamByPlayers(@PathVariable("attackerUuid") String attackerUuid,
+                                       @PathVariable("defenderUuid") String defenderUuid) {
         return teamService.findTeamByPlayers(attackerUuid, defenderUuid);
     }
 
     @PostMapping("/add")
-    Team addPlayer(@RequestBody Team team) {
-        return teamService.save(team);
+    TeamEntity addPlayer(@RequestBody TeamEntity teamEntity) {
+        return teamService.save(teamEntity);
     }
 
     @PutMapping("/update")
-    Team updatePlayer(@RequestBody Team team) {
-        return teamService.update(team);
+    TeamEntity updatePlayer(@RequestBody TeamEntity teamEntity) {
+        return teamService.update(teamEntity);
     }
 
     @DeleteMapping("/delete")
-    Team deleteTeam(@RequestBody String uuid) {
+    TeamEntity deleteTeam(@RequestBody String uuid) {
         return teamService.deleteByUuid(uuid);
     }
 

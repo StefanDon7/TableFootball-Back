@@ -1,15 +1,14 @@
-package rs.stefanlezaic.tablefootball.services.impl.jpa;
+package rs.stefanlezaic.tablefootball.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import rs.stefanlezaic.tablefootball.model.Match;
-import rs.stefanlezaic.tablefootball.repository.jpa.MatchRepository;
+import rs.stefanlezaic.tablefootball.model.entity.MatchEntity;
+import rs.stefanlezaic.tablefootball.repository.MatchRepository;
 import rs.stefanlezaic.tablefootball.services.MatchService;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @Transactional
@@ -24,38 +23,38 @@ public class MatchServiceJpaImpl implements MatchService {
     }
 
     @Override
-    public Match getByUuid(String uuid) {
+    public MatchEntity getByUuid(String uuid) {
         return matchRepository.getByUuid(uuid);
     }
 
     @Override
-    public List<Match> findAll() {
+    public List<MatchEntity> findAll() {
         return matchRepository.findAll();
     }
 
     @Override
-    public List<Match> findByPlayerUuid(String uuid) {
+    public List<MatchEntity> findByPlayerUuid(String uuid) {
         return matchRepository.findByPlayerUuid(uuid);
     }
 
     @Override
-    public List<Match> findByTeamUuid(String uuid) {
+    public List<MatchEntity> findByTeamUuid(String uuid) {
         return matchRepository.findByTeamUuid(uuid);
     }
 
     @Override
-    public Match save(Match match) {
-        match.setUuid(String.valueOf(UUID.randomUUID()));
-        return matchRepository.save(match);
+    public MatchEntity save(MatchEntity matchEntity) {
+//        matchEntity.setUuid(String.valueOf(UUID.randomUUID()));
+        return matchRepository.save(matchEntity);
     }
 
     @Override
-    public Match update(Match match) {
-        return matchRepository.saveAndFlush(match);
+    public MatchEntity update(MatchEntity matchEntity) {
+        return matchRepository.saveAndFlush(matchEntity);
     }
 
     @Override
-    public Match deleteByUuid(String uuid) {
+    public MatchEntity deleteByUuid(String uuid) {
         return matchRepository.deleteByUuid(uuid);
     }
 }

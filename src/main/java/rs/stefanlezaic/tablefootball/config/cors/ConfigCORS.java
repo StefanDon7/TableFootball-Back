@@ -1,4 +1,4 @@
-package rs.stefanlezaic.tablefootball.config;
+package rs.stefanlezaic.tablefootball.config.cors;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

@@ -1,4 +1,4 @@
-package rs.stefanlezaic.tablefootball.controllers;
+package rs.stefanlezaic.tablefootball.controllers.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import rs.stefanlezaic.tablefootball.authentication.AuthenticationRequest;
 import rs.stefanlezaic.tablefootball.authentication.AuthenticationResponse;
-import rs.stefanlezaic.tablefootball.config.JwtUtil;
-import rs.stefanlezaic.tablefootball.services.MyUserDetailsService;
+import rs.stefanlezaic.tablefootball.config.security.JwtUtil;
+import rs.stefanlezaic.tablefootball.services.auth.MyUserDetailsService;
 
 @RestController
 @RequestMapping("/api/auth")

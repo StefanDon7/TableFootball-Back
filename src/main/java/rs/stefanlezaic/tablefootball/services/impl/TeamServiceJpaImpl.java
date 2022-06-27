@@ -1,12 +1,11 @@
-package rs.stefanlezaic.tablefootball.services.impl.jpa;
+package rs.stefanlezaic.tablefootball.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import rs.stefanlezaic.tablefootball.model.Player;
-import rs.stefanlezaic.tablefootball.model.Team;
-import rs.stefanlezaic.tablefootball.repository.jpa.TeamRepository;
+import rs.stefanlezaic.tablefootball.model.entity.TeamEntity;
+import rs.stefanlezaic.tablefootball.repository.TeamRepository;
 import rs.stefanlezaic.tablefootball.services.TeamService;
 
 import java.util.List;
@@ -25,38 +24,38 @@ public class TeamServiceJpaImpl implements TeamService {
     }
 
     @Override
-    public List<Team> findAll() {
+    public List<TeamEntity> findAll() {
         return teamRepository.findAll();
     }
 
     @Override
-    public Team getByUuid(String uuid) {
+    public TeamEntity getByUuid(String uuid) {
         return teamRepository.getByUuid(uuid);
     }
 
     @Override
-    public Team findByPlayerUuid(String uuid) {
+    public TeamEntity findByPlayerUuid(String uuid) {
         return teamRepository.findByPlayerUuid(uuid);
     }
 
     @Override
-    public Team findTeamByPlayers(String firstPlayerUUID, String secondPlayerUUID) {
+    public TeamEntity findTeamByPlayers(String firstPlayerUUID, String secondPlayerUUID) {
         return teamRepository.findTeamByPlayers(firstPlayerUUID, secondPlayerUUID);
     }
 
     @Override
-    public Team save(Team team) {
-        team.setUuid(String.valueOf(UUID.randomUUID()));
-        return teamRepository.save(team);
+    public TeamEntity save(TeamEntity teamEntity) {
+        teamEntity.setUuid(String.valueOf(UUID.randomUUID()));
+        return teamRepository.save(teamEntity);
     }
 
     @Override
-    public Team update(Team team) {
-        return teamRepository.saveAndFlush(team);
+    public TeamEntity update(TeamEntity teamEntity) {
+        return teamRepository.saveAndFlush(teamEntity);
     }
 
     @Override
-    public Team deleteByUuid(String uuid) {
+    public TeamEntity deleteByUuid(String uuid) {
         return teamRepository.deleteByUuid(uuid);
     }
 }

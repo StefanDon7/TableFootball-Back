@@ -1,23 +1,23 @@
 package rs.stefanlezaic.tablefootball.services;
 
 import org.springframework.stereotype.Service;
-import rs.stefanlezaic.tablefootball.model.Match;
+import rs.stefanlezaic.tablefootball.model.entity.MatchEntity;
 
 import java.util.List;
 
 @Service
 public interface MatchService {
-    Match getByUuid(String uuid);
+    MatchEntity getByUuid(String uuid);
 
-    List<Match> findAll();
+    List<MatchEntity> findAll();
 
-    List<Match> findByPlayerUuid(String uuid);
+    List<MatchEntity> findByPlayerUuid(String uuid);
 
-    List<Match> findByTeamUuid(String uuid);
+    List<MatchEntity> findByTeamUuid(String uuid);
 
-    Match save(Match match);
+    MatchEntity save(MatchEntity matchEntity);
 
-    Match update(Match match);
+    MatchEntity update(MatchEntity matchEntity);
 
-    Match deleteByUuid(String uuid);
+    MatchEntity deleteByUuid(String uuid);
 }

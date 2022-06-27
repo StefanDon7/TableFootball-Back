@@ -1,23 +1,19 @@
 package rs.stefanlezaic.tablefootball.services;
 
 import org.springframework.stereotype.Service;
-import rs.stefanlezaic.tablefootball.model.Player;
+import rs.stefanlezaic.tablefootball.model.entity.PlayerEntity;
 
 import java.util.List;
 
 @Service
 public interface PlayerService {
-    List<Player> findAll();
+    List<PlayerEntity> findAll();
 
-    Player getByUuid(String uuid);
+    PlayerEntity getByUuid(String uuid);
 
-    Player findByUsernameAndPassword(String playerName, String password);
+    PlayerEntity save(PlayerEntity playerEntity);
 
-    Player findByEmailAndPassword(String email, String password);
+    PlayerEntity update(PlayerEntity playerEntity);
 
-    Player save(Player player);
-
-    Player update(Player player);
-
-    Player deleteByUuid(String uuid);
+    PlayerEntity deleteByUuid(String uuid);
 }
