@@ -3,7 +3,6 @@ package rs.stefanlezaic.tablefootball.model.entity;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import rs.plusplusnt.fullcircle.common.model.AbstractAuditableEntity;
 import rs.plusplusnt.fullcircle.lib.model.FullCircleEntity;
-import rs.stefanlezaic.tablefootball.model.dto.Player;
 import rs.stefanlezaic.tablefootball.model.dto.Team;
 
 import javax.persistence.*;
@@ -28,14 +27,14 @@ public class TeamEntity extends AbstractAuditableEntity implements FullCircleEnt
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "attack", referencedColumnName = "id")
-    private PlayerEntity attack;
+    private PlayerEntity attackPlayer;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "defence", referencedColumnName = "id")
-    private PlayerEntity defence;
+    private PlayerEntity defencePlayer;
 
 
-    public TeamEntity() {
+    public TeamEntity(Team team) {
     }
 
 

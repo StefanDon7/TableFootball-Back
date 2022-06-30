@@ -2,10 +2,12 @@ package rs.stefanlezaic.tablefootball.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import rs.stefanlezaic.tablefootball.model.dto.Team;
 import rs.stefanlezaic.tablefootball.model.entity.TeamEntity;
 import rs.stefanlezaic.tablefootball.services.TeamService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/team")
@@ -19,39 +21,39 @@ public class TeamController {
     }
 
     @GetMapping("/all")
-    public List<TeamEntity> getAllTeams() {
+    public List<Team> getAllTeams() {
         return teamService.findAll();
     }
 
     @GetMapping("/{uuid}")
-    public TeamEntity getTeamByUUID(@PathVariable("uuid") String uuid) {
-        return teamService.getByUuid(uuid);
+    public Optional<Team> getTeamByUUID(@PathVariable("uuid") String uuid) {
+        return teamService.findByUuid(uuid);
     }
 
     @GetMapping("/by-player/{uuid}")
-    public TeamEntity getTeamByPlayer(@PathVariable("uuid") String uuid) {
+    public Team getTeamByPlayer(@PathVariable("uuid") String uuid) {
         return teamService.findByPlayerUuid(uuid);
     }
 
-    @GetMapping("/attacker/{attackerUuid}/defender/{defenderUuid}")
-    public TeamEntity getTeamByPlayers(@PathVariable("attackerUuid") String attackerUuid,
-                                       @PathVariable("defenderUuid") String defenderUuid) {
-        return teamService.findTeamByPlayers(attackerUuid, defenderUuid);
+    @GetMapping("/attack/{attackPlayerUuid}/defence/{defencePlayerUuid}")
+    public Team getTeamByPlayers(@PathVariable("attackPlayerUuid") String attackPlayerUuid,
+                                       @PathVariable("defencePlayerUuid") String defencePlayerUuid) {
+        return teamService.findByPlayers(attackPlayerUuid, defencePlayerUuid);
     }
 
     @PostMapping("/add")
-    TeamEntity addPlayer(@RequestBody TeamEntity teamEntity) {
-        return teamService.save(teamEntity);
+    public Team addPlayer(@RequestBody Team team) {
+        return teamService.add(team);
     }
 
     @PutMapping("/update")
-    TeamEntity updatePlayer(@RequestBody TeamEntity teamEntity) {
-        return teamService.update(teamEntity);
+    public Optional<Team> updatePlayer(@RequestBody Team team) {
+        return teamService.update(team);
     }
 
     @DeleteMapping("/delete")
-    TeamEntity deleteTeam(@RequestBody String uuid) {
-        return teamService.deleteByUuid(uuid);
+    public Optional<Team> deleteTeam(@RequestBody String uuid) {
+        return teamService.removeByUuid(uuid);
     }
 
 }

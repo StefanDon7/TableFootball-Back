@@ -3,6 +3,7 @@ package rs.stefanlezaic.tablefootball.model.entity;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import rs.plusplusnt.fullcircle.common.model.AbstractAuditableEntity;
 import rs.plusplusnt.fullcircle.lib.model.FullCircleEntity;
+import rs.stefanlezaic.tablefootball.model.dto.ImmutableMatch;
 import rs.stefanlezaic.tablefootball.model.dto.Match;
 
 import javax.persistence.*;
@@ -42,7 +43,6 @@ public class MatchEntity extends AbstractAuditableEntity implements FullCircleEn
     public MatchEntity() {
     }
 
-
     public MatchEntity(Match dto, TeamEntity firstTeamEntity, TeamEntity secondTeamEntity) {
         this.uuid = dto.getUuid();
         this.name = dto.getName();
@@ -50,6 +50,10 @@ public class MatchEntity extends AbstractAuditableEntity implements FullCircleEn
         this.secondTeamGoal = dto.getSecondTeamGoal();
 
         update(dto);
+    }
+
+    public MatchEntity(Match match) {
+
     }
 
 
@@ -60,17 +64,23 @@ public class MatchEntity extends AbstractAuditableEntity implements FullCircleEn
 
     @Override
     public Match getDto() {
-        return null;
+        return ImmutableMatch.builder()
+                .id(id != null ? id : 0)
+                .uuid(uuid)
+                .name(name)
+                .firstTeam(firstTeamEntity.getDto())
+                .secondTeam(secondTeamEntity.getDto())
+                .firstTeamGoal(firstTeamGoal)
+                .secondTeamGoal(secondTeamGoal)
+                .build();
     }
 
     @Override
     public FullCircleEntity<Match> update(Match match) {
-        return null;
-    }
-
-    @Override
-    public Match getDto(Function<FullCircleEntity<Match>, Match> extender) {
-        return FullCircleEntity.super.getDto(extender);
+        this.name = match.getName();
+        this.firstTeamGoal = match.getFirstTeamGoal();
+        this.secondTeamGoal = match.getSecondTeamGoal();
+        return this;
     }
 
 

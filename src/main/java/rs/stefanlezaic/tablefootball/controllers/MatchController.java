@@ -2,6 +2,7 @@ package rs.stefanlezaic.tablefootball.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import rs.stefanlezaic.tablefootball.model.dto.Match;
 import rs.stefanlezaic.tablefootball.model.entity.MatchEntity;
 import rs.stefanlezaic.tablefootball.services.MatchService;
 
@@ -18,39 +19,39 @@ public class MatchController {
         this.matchService = matchService;
     }
 
-    @GetMapping("/{uuid}")
-    public MatchEntity getByUuid(@PathVariable String uuid) {
-        return matchService.getByUuid(uuid);
-    }
-
-    @GetMapping("/all")
-    public List<MatchEntity> findAll() {
-        return matchService.findAll();
-    }
-
-    @GetMapping("/by-player/{uuid}")
-    public List<MatchEntity> findByPlayerUuid(@PathVariable String uuid) {
-        return matchService.findByPlayerUuid(uuid);
-    }
-
-    @GetMapping("/by-team/{uuid}")
-    public List<MatchEntity> findByTeamUuid(@PathVariable String uuid) {
-        return matchService.findByTeamUuid(uuid);
-    }
-
-    @PostMapping("/add")
-    public MatchEntity save(@RequestBody MatchEntity matchEntity) {
-        return matchService.save(matchEntity);
-    }
-
-    @PutMapping("/update")
-    MatchEntity update(@RequestBody MatchEntity matchEntity) {
-        return matchService.update(matchEntity);
-    }
-
-    @DeleteMapping("/deleteByUuid")
-    MatchEntity deleteByUuid(@RequestBody String uuid) {
-        return matchService.deleteByUuid(uuid);
-    }
+//    @GetMapping("/{uuid}")
+//    public Match getByUuid(@PathVariable String uuid) {
+//        return matchService.getByUuid(uuid);
+//    }
+//
+//    @GetMapping("/all")
+//    public List<Match> findAll() {
+//        return matchService.findAll();
+//    }
+//
+//    @GetMapping("/by-player/{uuid}")
+//    public List<Match> findByPlayerUuid(@PathVariable String uuid) {
+//        return matchService.findByPlayerUuid(uuid);
+//    }
+//
+//    @GetMapping("/by-team/{uuid}")
+//    public List<Match> findByTeamUuid(@PathVariable String uuid) {
+//        return matchService.findByTeamUuid(uuid);
+//    }
+//
+//    @PostMapping("/add")
+//    public Match save(@RequestBody Match match) {
+//        return matchService.save(match);
+//    }
+//
+//    @PutMapping("/update")
+//    Match update(@RequestBody MatchEntity match) {
+//        return matchService.update(match);
+//    }
+//
+//    @DeleteMapping("/deleteByUuid")
+//    Match deleteByUuid(@RequestBody String uuid) {
+//        return matchService.deleteByUuid(uuid);
+//    }
 
 }

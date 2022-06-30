@@ -6,6 +6,8 @@ import org.immutables.serial.Serial;
 import org.immutables.value.Value;
 import rs.stefanlezaic.tablefootball.model.TableFootballDto;
 
+import java.util.Optional;
+
 @Value.Immutable
 @JsonSerialize(as = ImmutableTeam.class)
 @JsonDeserialize(as = ImmutableTeam.class)
@@ -13,7 +15,12 @@ import rs.stefanlezaic.tablefootball.model.TableFootballDto;
 public interface Team extends TableFootballDto {
     String getName();
 
-    Player getDefence();
+    Optional<Player> getDefencePlayer();
 
-    Player getAttack();
+    Optional<String> getDefencePlayerUuid();
+
+    Optional<Player> getAttackPlayer();
+
+    Optional<String> getAttackPlayerUuid();
+
 }
